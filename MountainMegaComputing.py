@@ -75,41 +75,89 @@ class Server():
             "en_cola": cliente_TE, "numSolicitudes": numSolicitudes, "setTiempo": setTiempo, "i_llegada": i_llegada, "i_salida": i_salida, "tiempoOcupado": tiempoOcupado
         }
 
-## Mountain Mega Computing
-mountain = Server(potencia = 100)
-resultados = mountain.simulate()
-print(Fore.GREEN + ">>>>>>>  2400 solicitudes máximas" + Style.RESET_ALL)
-print("1. ¿Cuántas solicitudes atendió cada servidor?")
-print(resultados["numSolicitudes"][0])
-print("\n2. ¿Cuánto tiempo estuvo cada servidor ocupado?")
-print(resultados["tiempoOcupado"][0])
-print("\n3. ¿Cuánto tiempo estuvo cada servidor desocupado (idle)?")
-print(np.maximum(np.ones(mountain.serviSist)*60 - resultados["tiempoOcupado"],0)[0])
-print("\n4. Cuánto tiempo en total estuvieron las solicitudes en cola?")
-print(np.round(sum(resultados["en_cola"]),5))
-print("\n5. En promedio ¿cuánto tiempo estuvo cada solicitud en cola?")
-print(np.round(np.mean(resultados["en_cola"]),5))
-print("\n6. En promedio, ¿cuántas solicitudes estuvieron en cola cada segundo?")
-sol_psec = [ 1/num if num != 0 else 0 for num in resultados["en_cola"] ]
-print(np.round(np.mean(sol_psec),5))
-print("\n7. ¿Cuál es el momento de la salida de la última solicitud?")
-print(np.round(resultados["setTiempo"][-1],5), "min") 
+# ## Mountain Mega Computing
+# mountain = Server(potencia = 100)
+# resultados = mountain.simulate()
+# print(Fore.GREEN + ">>>>>>>  Mountain Mega Computing" + Style.RESET_ALL)
+# print(Fore.GREEN + ">>>>>>>  2400 solicitudes máximas" + Style.RESET_ALL)
+# print("1. ¿Cuántas solicitudes atendió cada servidor?")
+# print(resultados["numSolicitudes"][0])
+# print("\n2. ¿Cuánto tiempo estuvo cada servidor ocupado?")
+# print(resultados["tiempoOcupado"][0])
+# print("\n3. ¿Cuánto tiempo estuvo cada servidor desocupado (idle)?")
+# print(np.maximum(np.ones(mountain.serviSist)*60 - resultados["tiempoOcupado"],0)[0])
+# print("\n4. Cuánto tiempo en total estuvieron las solicitudes en cola?")
+# print(np.round(sum(resultados["en_cola"]),5))
+# print("\n5. En promedio ¿cuánto tiempo estuvo cada solicitud en cola?")
+# print(np.round(np.mean(resultados["en_cola"]),5))
+# print("\n6. En promedio, ¿cuántas solicitudes estuvieron en cola cada segundo?")
+# sol_psec = [ 1/num if num != 0 else 0 for num in resultados["en_cola"] ]
+# print(np.round(np.mean(sol_psec),5))
+# print("\n7. ¿Cuál es el momento de la salida de la última solicitud?")
+# print(np.round(resultados["setTiempo"][-1],5), "min")
 
-print(Fore.GREEN + ">>>>>>>  6000 solicitudes máximas" + Style.RESET_ALL)
-mountain = Server(potencia = 100, max_sol = 6000)
-resultados_g2 = mountain.simulate()
-print("1. ¿Cuántas solicitudes atendió cada servidor?")
-print(resultados_g2["numSolicitudes"][0])
-print("\n2. ¿Cuánto tiempo estuvo cada servidor ocupado?")
-print(resultados_g2["tiempoOcupado"][0])
-print("\n3. ¿Cuánto tiempo estuvo cada servidor desocupado (idle)?")
-print(np.maximum(np.ones(mountain.serviSist)*60 - resultados_g2["tiempoOcupado"],0)[0])
-print("\n4. Cuánto tiempo en total estuvieron las solicitudes en cola?")
-print(np.round(sum(resultados_g2["en_cola"]),5))
-print("\n5. En promedio ¿cuánto tiempo estuvo cada solicitud en cola?")
-print(np.round(np.mean(resultados_g2["en_cola"]),5))
-print("\n6. En promedio, ¿cuántas solicitudes estuvieron en cola cada segundo?")
-sol_psec = [ 1/num if num != 0 else 0 for num in resultados_g2["en_cola"] ]
-print(np.round(np.mean(sol_psec),5))
-print("\n7. ¿Cuál es el momento de la salida de la última solicitud?")
-print(np.round(resultados_g2["setTiempo"][-1],5), "min") 
+# print(Fore.GREEN + ">>>>>>>  Mountain Mega Computing" + Style.RESET_ALL)
+# print(Fore.GREEN + ">>>>>>>  6000 solicitudes máximas" + Style.RESET_ALL)
+# mountain = Server(potencia = 100, max_sol = 6000)
+# resultados_g2 = mountain.simulate()
+# print("1. ¿Cuántas solicitudes atendió cada servidor?")
+# print(resultados_g2["numSolicitudes"][0])
+# print("\n2. ¿Cuánto tiempo estuvo cada servidor ocupado?")
+# print(resultados_g2["tiempoOcupado"][0])
+# print("\n3. ¿Cuánto tiempo estuvo cada servidor desocupado (idle)?")
+# print(np.maximum(np.ones(mountain.serviSist)*60 - resultados_g2["tiempoOcupado"],0)[0])
+# print("\n4. Cuánto tiempo en total estuvieron las solicitudes en cola?")
+# print(np.round(sum(resultados_g2["en_cola"]),5))
+# print("\n5. En promedio ¿cuánto tiempo estuvo cada solicitud en cola?")
+# print(np.round(np.mean(resultados_g2["en_cola"]),5))
+# print("\n6. En promedio, ¿cuántas solicitudes estuvieron en cola cada segundo?")
+# sol_psec = [ 1/num if num != 0 else 0 for num in resultados_g2["en_cola"] ]
+# print(np.round(np.mean(sol_psec),5))
+# print("\n7. ¿Cuál es el momento de la salida de la última solicitud?")
+# print(np.round(resultados_g2["setTiempo"][-1],5), "min") 
+
+# ## Pizzita Computing
+# pizza = Server(potencia = 10, max_sol=6000)
+# resultados_pizza = pizza.simulate()
+# print(Fore.GREEN + ">>>>>>>  Pizzita Computing" + Style.RESET_ALL)
+# print(Fore.GREEN + ">>>>>>>  6000 solicitudes máximas" + Style.RESET_ALL)
+# print("1. ¿Cuántas solicitudes atendió cada servidor?")
+# print(resultados_pizza["numSolicitudes"][0])
+# print("\n2. ¿Cuánto tiempo estuvo cada servidor ocupado?")
+# print(resultados_pizza["tiempoOcupado"][0])
+# print("\n3. ¿Cuánto tiempo estuvo cada servidor desocupado (idle)?")
+# print(np.maximum(np.ones(pizza.serviSist)*60 - resultados_pizza["tiempoOcupado"],0)[0])
+# print("\n4. Cuánto tiempo en total estuvieron las solicitudes en cola?")
+# print(np.round(sum(resultados_pizza["en_cola"]),5))
+# print("\n5. En promedio ¿cuánto tiempo estuvo cada solicitud en cola?")
+# print(np.round(np.mean(resultados_pizza["en_cola"]),5))
+# print("\n6. En promedio, ¿cuántas solicitudes estuvieron en cola cada segundo?")
+# sol_psec = [ 1/num if num != 0 else 0 for num in resultados_pizza["en_cola"] ]
+# print(np.round(np.mean(sol_psec),5))
+# print("\n7. ¿Cuál es el momento de la salida de la última solicitud?")
+# print(np.round(resultados_pizza["setTiempo"][-1],5), "min")
+
+## Pizzita Computing
+#EMPIRIC SERVER QUANTITY
+counter = 1
+testingServers = True
+
+while testingServers:
+    pizza = Server(potencia = 10, max_sol=2400, serviSist=counter)
+    resultados_pizza = pizza.simulate()
+    print(Fore.GREEN + ">>>>>>>  Cantidad de Servidores: " + str(counter) + Style.RESET_ALL)
+    print("\nTiempo en total que estuvieron las solicitudes en cola:")
+    queueTime = np.round(sum(resultados_pizza["en_cola"]),5)
+    print(queueTime)
+
+    if queueTime > 0:
+        counter += 1
+    else:
+        testingServers = False
+
+# pizza = Server(potencia = 10, max_sol=2400, serviSist=1)
+# resultados_pizza = pizza.simulate()
+# print(Fore.GREEN + ">>>>>>>  Cantidad de Servidores: " + str(1) + Style.RESET_ALL)
+# print("\nTiempo en total que estuvieron las solicitudes en cola:")
+# queueTime = np.round(sum(resultados_pizza["en_cola"]),5)
+# print(queueTime)
